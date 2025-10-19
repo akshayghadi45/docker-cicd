@@ -64,7 +64,9 @@ public class BaseTest {
                 co.setPlatformName("linux");
                 co.setPageLoadStrategy(PageLoadStrategy.EAGER);
                 try {
+                    //remote webdriver url for selenium standalone
                     //driver = new RemoteWebDriver(new URL("http://localhost:4441"), co);
+                    //remote webdriver url for selenium grd
                     driver = new RemoteWebDriver(new URL("http://localhost:4444"), co);
                 } catch (MalformedURLException e) {
                     throw new RuntimeException(e);
@@ -84,7 +86,9 @@ public class BaseTest {
                 fo.setPlatformName("linux");
                 fo.setPageLoadStrategy(PageLoadStrategy.EAGER);
                 try {
+                    //remote webdriver url for selenium standalone
                     //driver = new RemoteWebDriver(new URL("http://localhost:4442"), fo);
+                    //remote webdriver url for selenium grid
                     driver = new RemoteWebDriver(new URL("http://localhost:4444"), fo);
                 } catch (MalformedURLException e) {
                     throw new RuntimeException(e);
