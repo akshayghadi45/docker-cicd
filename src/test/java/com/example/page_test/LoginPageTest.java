@@ -1,4 +1,4 @@
-package page_test;
+package com.example.page_test;
 
 import org.testng.annotations.Test;
 import page_objects.LoginPageObject;
