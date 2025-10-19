@@ -9,24 +9,34 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.LocalDateTime;
 
 import static utils.ExtentReportHandler.getExtentReportObject;
 import static utils.ExtentReportHandler.reports;
 
+
 public class BaseTest {
     protected WebDriver driver;
     protected String browser;
-    //private ChromeOptions co;
-    //private FirefoxOptions fo;
+    private final ChromeOptions co = new ChromeOptions();
+    private final FirefoxOptions fo =new FirefoxOptions();
+
+    private static final Logger logger = LogManager.getLogger(BaseTest.class);
+
 
     //reports
     protected static ThreadLocal<ExtentTest> testLogger = new ThreadLocal<>();
@@ -41,24 +51,51 @@ public class BaseTest {
         }else{
             browser =AppConstants.browserName;
         }
+        logger.info("browserName:{}",browser);
 
         if(browser.equalsIgnoreCase("chrome")){
-            if(AppConstants.playform.equalsIgnoreCase("local")){
+            if(System.getProperty("platform", "local").equalsIgnoreCase("local")){
                 //co.addArguments("--remote-allow-origins=*");
                 WebDriverManager.chromedriver().setup();
                 driver= new ChromeDriver();
 
             }
+            else if(System.getProperty("platform", "local").equalsIgnoreCase("remote")){
+                co.setPlatformName("linux");
+                co.setPageLoadStrategy(PageLoadStrategy.EAGER);
+                try {
+                    //driver = new RemoteWebDriver(new URL("http://localhost:4441"), co);
+                    driver = new RemoteWebDriver(new URL("http://localhost:4444"), co);
+                } catch (MalformedURLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            else {
+                logger.info("Platform not supported");
+            }
         }
         else if(browser.equalsIgnoreCase("firefox")){
-            if(AppConstants.playform.equalsIgnoreCase("local")){
+            if(System.getProperty("platform", "local").equalsIgnoreCase("local")){
                 //fo.addArguments("--remote-allow-origins=*");
                 WebDriverManager.firefoxdriver().setup();
                 driver= new FirefoxDriver();
             }
+            else if(System.getProperty("platform", "local").equalsIgnoreCase("remote")){
+                fo.setPlatformName("linux");
+                fo.setPageLoadStrategy(PageLoadStrategy.EAGER);
+                try {
+                    //driver = new RemoteWebDriver(new URL("http://localhost:4442"), fo);
+                    driver = new RemoteWebDriver(new URL("http://localhost:4444"), fo);
+                } catch (MalformedURLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            else {
+                logger.info("Platform not supported");
+            }
         }
         else{
-            System.out.println("Browser name entered is not supported!!");
+            logger.info("Browser name not found" );
         }
         ExtentTest test = reports.createTest(iTestResult.getMethod().getMethodName());
         testLogger.set(test);

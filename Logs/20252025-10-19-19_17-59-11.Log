@@ -1,0 +1,6 @@
+2025-10-19 17:59:11 [TestNG-tests-2] INFO  BaseTest:54 - browserName:chrome
+2025-10-19 17:59:11 [TestNG-tests-1] INFO  BaseTest:54 - browserName:chrome
+2025-10-19 17:59:17 [TestNG-tests-2] INFO  WebDriverManager:1268 - Using chromedriver 141.0.7390.78 (resolved driver for Chrome 141)
+2025-10-19 17:59:17 [TestNG-tests-1] INFO  WebDriverManager:1268 - Using chromedriver 141.0.7390.78 (resolved driver for Chrome 141)
+2025-10-19 17:59:17 [TestNG-tests-1] INFO  WebDriverManager:1331 - Exporting webdriver.chrome.driver as /Users/akshayghadi/.cache/selenium/chromedriver/mac-arm64/141.0.7390.78/chromedriver
+2025-10-19 17:59:17 [TestNG-tests-2] INFO  WebDriverManager:1331 - Exporting webdriver.chrome.driver as /Users/akshayghadi/.cache/selenium/chromedriver/mac-arm64/141.0.7390.78/chromedriver

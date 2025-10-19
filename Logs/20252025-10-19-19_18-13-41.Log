@@ -1,0 +1,4 @@
+2025-10-19 18:13:42 [TestNG-tests-2] INFO  BaseTest:54 - browserName:firefox
+2025-10-19 18:13:42 [TestNG-tests-1] INFO  BaseTest:54 - browserName:firefox
+2025-10-19 18:13:54 [TestNG-tests-1] INFO  LoginPageTest:21 - username is: standard_user and password is: secret_sauce
+2025-10-19 18:14:07 [TestNG-tests-2] INFO  ProductsPageTest:19 - username is: performance glitch user and password is: secret_sauce

@@ -1,0 +1,3 @@
+2025-10-19 17:33:39 [TestNG-tests-2] INFO  BaseTest:54 - browserName:firefox
+2025-10-19 17:33:39 [TestNG-tests-1] INFO  BaseTest:54 - browserName:chrome
+2025-10-19 17:33:40 [TestNG-tests-1] INFO  LoginPageTest:21 - username is: standard_user and password is: secret_sauce

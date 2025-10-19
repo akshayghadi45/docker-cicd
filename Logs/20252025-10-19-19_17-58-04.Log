@@ -1,0 +1,8 @@
+2025-10-19 17:58:04 [TestNG-tests-2] INFO  BaseTest:54 - browserName:firefox
+2025-10-19 17:58:04 [TestNG-tests-1] INFO  BaseTest:54 - browserName:firefox
+2025-10-19 17:58:05 [TestNG-tests-2] INFO  WebDriverManager:1268 - Using geckodriver 0.36.0 (resolved driver for Firefox 144)
+2025-10-19 17:58:05 [TestNG-tests-2] INFO  WebDriverManager:1331 - Exporting webdriver.gecko.driver as /Users/akshayghadi/.cache/selenium/geckodriver/mac-arm64/0.36.0/geckodriver
+2025-10-19 17:58:05 [TestNG-tests-1] INFO  WebDriverManager:1268 - Using geckodriver 0.36.0 (resolved driver for Firefox 144)
+2025-10-19 17:58:05 [TestNG-tests-1] INFO  WebDriverManager:1331 - Exporting webdriver.gecko.driver as /Users/akshayghadi/.cache/selenium/geckodriver/mac-arm64/0.36.0/geckodriver
+2025-10-19 17:58:18 [TestNG-tests-2] INFO  ProductsPageTest:19 - username is: performance glitch user and password is: secret_sauce
+2025-10-19 17:58:19 [TestNG-tests-1] INFO  LoginPageTest:21 - username is: standard_user and password is: secret_sauce
