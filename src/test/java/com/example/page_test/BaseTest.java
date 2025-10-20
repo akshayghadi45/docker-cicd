@@ -83,27 +83,6 @@ public class BaseTest {
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver(co);
 
-                ///
-//                co.addArguments("--headless=new");          // headless Chrome for CI
-//                co.addArguments("--disable-gpu");
-//                co.addArguments("--no-sandbox");
-//                co.addArguments("--disable-dev-shm-usage"); // important in Docker
-//                co.addArguments("--remote-allow-origins=*");
-//                // unique profile to avoid conflicts
-//                co.addArguments("--user-data-dir=/tmp/chrome-" + UUID.randomUUID());
-//
-//                // Connect to Selenium Grid running in GH Actions service
-//                try {
-//                    driver = new RemoteWebDriver(
-//                            new URL(System.getProperty("grid.url", "http://localhost:4444/wd/hub")),
-//                            co
-//                    );
-//                } catch (MalformedURLException e) {
-//                    throw new RuntimeException(e);
-//                }
-
-                ///
-
             }
             else {
                 logger.info("Platform not supported");
@@ -126,6 +105,17 @@ public class BaseTest {
                 } catch (MalformedURLException e) {
                     throw new RuntimeException(e);
                 }
+            }
+            else if(System.getProperty("platform", "local").equalsIgnoreCase("remote_git")){
+                fo.addArguments("--headless");                          //for githib actions
+                fo.addArguments("--disable-gpu");
+                fo.addArguments("--no-sandbox");
+                fo.addArguments("--remote-allow-origins=*");
+                // Use a unique temp folder for each session to avoid conflicts
+                //co.addArguments("--user-data-dir=/tmp/chrome-" + UUID.randomUUID());
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver(fo);
+
             }
             else {
                 logger.info("Platform not supported");
