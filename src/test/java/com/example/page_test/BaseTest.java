@@ -74,14 +74,32 @@ public class BaseTest {
                 }
             }
             else if(AppConstants.platform.equalsIgnoreCase("remote_git")){
-                co.addArguments("--headless");                          //for githib actions
+//                co.addArguments("--headless");                          //for githib actions
+//                co.addArguments("--disable-gpu");
+//                co.addArguments("--no-sandbox");
+//                co.addArguments("--remote-allow-origins=*");
+//                // Use a unique temp folder for each session to avoid conflicts
+//                co.addArguments("--user-data-dir=/tmp/chrome-" + UUID.randomUUID());
+//                WebDriverManager.chromedriver().setup();
+//                driver = new ChromeDriver(co);
+
+                co.addArguments("--headless=new");          // headless Chrome for CI
                 co.addArguments("--disable-gpu");
                 co.addArguments("--no-sandbox");
+                co.addArguments("--disable-dev-shm-usage"); // important in Docker
                 co.addArguments("--remote-allow-origins=*");
-                // Use a unique temp folder for each session to avoid conflicts
+                // unique profile to avoid conflicts
                 co.addArguments("--user-data-dir=/tmp/chrome-" + UUID.randomUUID());
-                WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver(co);
+
+                // Connect to Selenium Grid running in GH Actions service
+                try {
+                    driver = new RemoteWebDriver(
+                            new URL(System.getProperty("grid.url", "http://localhost:4444/wd/hub")),
+                            co
+                    );
+                } catch (MalformedURLException e) {
+                    throw new RuntimeException(e);
+                }
 
             }
             else {
