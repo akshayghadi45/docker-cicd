@@ -9,6 +9,17 @@
 name: Java CI with Maven
 
 on:
+  workflow_dispatch:
+    inputs:
+      browsername:
+        type: string
+        description: 'browser name'
+        default: 'chrome'
+      xmlfilename:
+        type: string
+        description: 'enter suite xml file name'
+        default: 'testng_maven.xml'
+
   push:
     branches: [ "master" ]
   pull_request:
@@ -29,7 +40,18 @@ jobs:
         cache: maven
     - name: Build with Maven
       #run: mvn -B package --file pom.xml
-      run: mvn clean test -Dplatform=remote_git
+      run: > 
+        mvn clean test
+        -Dplatform=remote_git
+        -Dsurefire.suiteXmlFiles=${{inputs.xmlfilename}}
+        -Dmaven.test.failure.ignore=true
+
+    #Report generation
+    - name: archive report artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: sparkHTML
+        path: ./report/*.html
 
 #    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
 #    - name: Update dependency graph
