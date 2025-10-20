@@ -77,7 +77,7 @@ public class BaseTest {
                 co.addArguments("--headless");                          //for githib actions
                 co.addArguments("--disable-gpu");
                 co.addArguments("--no-sandbox");
-                co.addArguments("--remote-allow-origins=*");
+                //co.addArguments("--remote-allow-origins=*"); //not required for github actions
                 // Use a unique temp folder for each session to avoid conflicts
                 //co.addArguments("--user-data-dir=/tmp/chrome-" + UUID.randomUUID());
                 WebDriverManager.chromedriver().setup();
@@ -110,7 +110,7 @@ public class BaseTest {
                 fo.addArguments("--headless");                          //for githib actions
                 fo.addArguments("--disable-gpu");
                 fo.addArguments("--no-sandbox");
-                fo.addArguments("--remote-allow-origins=*");
+                //fo.addArguments("--remote-allow-origins=*"); // not required fot github actions
                 // Use a unique temp folder for each session to avoid conflicts
                 //co.addArguments("--user-data-dir=/tmp/chrome-" + UUID.randomUUID());
                 WebDriverManager.firefoxdriver().setup();
