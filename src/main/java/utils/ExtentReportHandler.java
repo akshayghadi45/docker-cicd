@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 public class ExtentReportHandler {
 
     public static ExtentReports reports;
-    public static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    public static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
 
     public static ExtentReports getExtentReportObject(){
         String reportPath = "./reports/"+dtf.format(LocalDateTime.now());
