@@ -1,0 +1,11 @@
+2025-10-20 15:52:48 [main] INFO  Utils:112 - [TestNG] Running:
+  /Users/akshayghadi/IdeaProjects/chatApp/docker-cicd/testng.xml
+
+2025-10-20 15:52:48 [TestNG-tests-2] INFO  BaseTest:55 - browserName:firefox
+2025-10-20 15:52:48 [TestNG-tests-1] INFO  BaseTest:55 - browserName:chrome
+2025-10-20 15:52:48 [TestNG-tests-1] INFO  WebDriverManager:1268 - Using chromedriver 141.0.7390.78 (resolved driver for Chrome 141)
+2025-10-20 15:52:48 [TestNG-tests-1] INFO  WebDriverManager:1331 - Exporting webdriver.chrome.driver as /Users/akshayghadi/.cache/selenium/chromedriver/mac-arm64/141.0.7390.78/chromedriver
+2025-10-20 15:52:49 [TestNG-tests-2] INFO  WebDriverManager:1268 - Using geckodriver 0.36.0 (resolved driver for Firefox 144)
+2025-10-20 15:52:49 [TestNG-tests-2] INFO  WebDriverManager:1331 - Exporting webdriver.gecko.driver as /Users/akshayghadi/.cache/selenium/geckodriver/mac-arm64/0.36.0/geckodriver
+2025-10-20 15:53:00 [TestNG-tests-1] INFO  LoginPageTest:21 - username is: standard_user and password is: secret_sauce
+2025-10-20 15:53:02 [TestNG-tests-2] INFO  ProductsPageTest:19 - username is: performance glitch user and password is: secret_sauce
