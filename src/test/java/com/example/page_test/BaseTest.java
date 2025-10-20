@@ -24,6 +24,7 @@ import org.testng.annotations.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import static utils.ExtentReportHandler.getExtentReportObject;
 import static utils.ExtentReportHandler.reports;
@@ -76,7 +77,9 @@ public class BaseTest {
                 co.addArguments("--headless");                          //for githib actions
                 co.addArguments("--disable-gpu");
                 co.addArguments("--no-sandbox");
-                co.addArguments("--remote-allow-origins");
+                co.addArguments("--remote-allow-origins=*");
+                // Use a unique temp folder for each session to avoid conflicts
+                co.addArguments("--user-data-dir=/tmp/chrome-" + UUID.randomUUID());
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver(co);
 
