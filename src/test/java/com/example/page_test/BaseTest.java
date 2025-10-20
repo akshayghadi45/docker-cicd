@@ -72,6 +72,15 @@ public class BaseTest {
                     throw new RuntimeException(e);
                 }
             }
+            else if(AppConstants.platform.equalsIgnoreCase("remote_git")){
+                co.addArguments("--headless");                          //for githib actions
+                co.addArguments("--disable-gpu");
+                co.addArguments("--no-sandbox");
+                co.addArguments("--remote-allow-origins");
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver(co);
+
+            }
             else {
                 logger.info("Platform not supported");
             }
