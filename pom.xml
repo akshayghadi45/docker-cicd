@@ -12,7 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <XmlFile>testng_maven.xml</XmlFile>
+    <XmlFile>testng.xml</XmlFile>
   </properties>
 
   <dependencies>
