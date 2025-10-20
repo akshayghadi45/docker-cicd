@@ -18,11 +18,6 @@ public class LoginPageObject extends WebElementsInteractions {
         goToApplication("https://www.saucedemo.com/");
         sendText(usernameTextField, "standard_user");
         sendText(passwordTextField, "secret_sauce");
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         clickElement(loginButton);
         return new ProductPageObject(driver);
     }
