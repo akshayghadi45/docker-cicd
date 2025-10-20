@@ -73,7 +73,7 @@ public class BaseTest {
                     throw new RuntimeException(e);
                 }
             }
-            else if(System.getProperty("platfoem", "local").equalsIgnoreCase("remote_git")){
+            else if(System.getProperty("platform", "local").equalsIgnoreCase("remote_git")){
                 co.addArguments("--headless");                          //for githib actions
                 co.addArguments("--disable-gpu");
                 co.addArguments("--no-sandbox");
