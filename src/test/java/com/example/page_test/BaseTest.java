@@ -84,6 +84,18 @@ public class BaseTest {
                 driver = new ChromeDriver(co);
 
             }
+            else if(System.getProperty("platform", "local").equalsIgnoreCase("jenkins")){
+                co.setPlatformName("linux");
+                co.setPageLoadStrategy(PageLoadStrategy.EAGER);
+                try {
+                    //remote webdriver url for selenium standalone
+                    //driver = new RemoteWebDriver(new URL("http://localhost:4441"), co);
+                    //remote webdriver url for selenium grd
+                    driver = new RemoteWebDriver(new URL("http://192.168.1.36:4444/wd/hub"), co);
+                } catch (MalformedURLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
             else {
                 logger.info("Platform not supported");
             }
@@ -116,6 +128,18 @@ public class BaseTest {
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver(fo);
 
+            }
+            else if(System.getProperty("platform", "local").equalsIgnoreCase("jenkins")){
+                fo.setPlatformName("linux");
+                fo.setPageLoadStrategy(PageLoadStrategy.EAGER);
+                try {
+                    //remote webdriver url for selenium standalone
+                    //driver = new RemoteWebDriver(new URL("http://localhost:4441"), co);
+                    //remote webdriver url for selenium grd
+                    driver = new RemoteWebDriver(new URL("http://192.168.1.36:4444/wd/hub"), fo);
+                } catch (MalformedURLException e) {
+                    throw new RuntimeException(e);
+                }
             }
             else {
                 logger.info("Platform not supported");
